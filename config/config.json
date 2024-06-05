@@ -1,5 +1,5 @@
 {
-    "ChangeInertia": true,
-    "ChangeOverweight": true,
-    "ChangeStamina": true
+    "changeInertia": true,
+    "changeOverweight": true,
+    "changeStamina": true
 }

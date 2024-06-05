@@ -11,7 +11,7 @@ import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 class Mod implements IPostDBLoadMod {
     private database: IDatabaseTables;
     private jsonUtil: JsonUtil;
-    private config: {ChangeInertia: boolean, ChangeOverweight: boolean, ChangeStamina:boolean};
+    private config: {changeInertia: boolean, changeOverweight: boolean, changeStamina:boolean};
 	
     public postDBLoad(container: DependencyContainer): void {
         this.database = container.resolve<DatabaseServer>("DatabaseServer").getTables();
@@ -27,7 +27,7 @@ class Mod implements IPostDBLoadMod {
         const inertia = this.database.globals.config.Inertia;
         const stamina = this.database.globals.config.Stamina;
         
-        if (this.config.ChangeInertia) {
+        if (this.config.changeInertia) {
             inertia.InertiaLimits.y = 73;
             inertia.MoveTimeRange.x = 0.07;
             inertia.MoveTimeRange.y = 0.25;
@@ -35,14 +35,14 @@ class Mod implements IPostDBLoadMod {
             inertia.WalkInertia.y = 0.335;
         }
 
-        if (this.config.ChangeOverweight) {
+        if (this.config.changeOverweight) {
             stamina.BaseOverweightLimits.y = 77;
             stamina.SprintOverweightLimits.y = 72;
             stamina.WalkOverweightLimits.y = 86;
             stamina.WalkSpeedOverweightLimits.y = 80;
         }
 
-        if (this.config.ChangeStamina) {
+        if (this.config.changeStamina) {
             stamina.Capacity = 115;
             stamina.HandsCapacity = 80;
         }
